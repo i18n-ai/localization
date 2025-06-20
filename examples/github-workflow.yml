@@ -1,0 +1,44 @@
+name: Translate i18n Files
+
+on:
+  # Trigger on push to main branch
+  push:
+    branches: [main]
+    paths:
+      - 'src/locales/en.json' # Only trigger when the English source file changes
+
+  # Trigger on pull requests to main branch
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/locales/en.json'
+
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    # Skip the job if commit message contains "update translations" to avoid loops
+    if: "!contains(github.event.head_commit.message, 'update translations')"
+    steps:
+      # Check out the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Run the translation action
+      - name: Translate i18n files
+        uses: lingovo/i18n-translation-action@v1
+        with:
+          access_token: ${{ secrets.TRANSLATION_API_TOKEN }}
+          i18n_dir: './src/locales'
+          source_language: 'en-US'
+          target_languages: 'fr-FR,es-ES,de-DE,it-IT,ja-JP,zh-CN'
+
+      # Optional: Commit the changes back to the repository
+      - name: Commit translation changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'chore: update translations from English source'
+          file_pattern: 'src/locales/*.json'
+          branch: ${{ github.head_ref || github.ref_name }}

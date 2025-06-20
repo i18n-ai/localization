@@ -1,0 +1,44 @@
+{
+  "common": {
+    "buttons": {
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "save": "Save",
+      "delete": "Delete"
+    },
+    "messages": {
+      "success": "Operation successful",
+      "error": "An error occurred",
+      "loading": "Loading, please wait"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "username": "Username",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "signIn": "Sign In",
+      "rememberMe": "Remember me"
+    },
+    "register": {
+      "title": "Register",
+      "createAccount": "Create Account",
+      "alreadyHaveAccount": "Already have an account?"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome to your dashboard",
+    "statistics": {
+      "title": "Statistics",
+      "visitors": "Visitors",
+      "sales": "Sales",
+      "revenue": "Revenue"
+    }
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "serverError": "Server error",
+    "unauthorized": "Unauthorized access"
+  }
+} 

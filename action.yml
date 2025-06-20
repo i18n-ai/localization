@@ -1,0 +1,25 @@
+name: 'AI-Powered Localization'
+description: 'Automatically translate i18n JSON files to multiple languages using professional AI translation'
+author: 'i18n-ai'
+
+inputs:
+  access_token:
+    description: 'Access token for authentication'
+    required: true
+  i18n_dir:
+    description: 'Path to the i18n directory containing language files'
+    required: true
+  source_language:
+    description: 'Source language code (e.g., en, fr, es)'
+    required: true
+  target_languages:
+    description: 'Comma-separated list of target language codes'
+    required: true
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'globe'
+  color: 'blue'
